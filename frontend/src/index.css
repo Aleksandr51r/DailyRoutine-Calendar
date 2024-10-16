@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f1f1f1;
+
+  font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #333333; /* Темный серый фон */
+  border: 2px solid #444444; /* Чуть светлее для контраста */
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #555555; /* Светлее при наведении */
+  transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+button:active {
+  background-color: #222222; /* Темнее при нажатии */
+  transform: scale(0.98); /* Легкое уменьшение при нажатии */
+}
+
+button:disabled {
+  background-color: #777777; /* Серая для отключенной кнопки */
+  cursor: not-allowed;
+  border-color: #666666;
+}
