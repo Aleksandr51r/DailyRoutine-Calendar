@@ -1,12 +1,9 @@
 import "./App.css"
-import MonthCalendar from "./components/timeDivision/MonthCalendar"
+import MonthCalendar from "./components/timeDivision/MonthCalendar/MonthCalendar"
 
 function App() {
   return (
-    <div className='App w-full flex flex-row justify-around'>
-      {/* <h1 className='text-3xl font-bold  self-auto basis-1 m-2'>Hello</h1>
-      <h1 className='text-3xl font-bold  self-auto basis-1 m-2'>SECOND</h1>
-      <h1 className='text-3xl font-bold  self-auto basis-1 m-2'>Thrid</h1> */}
+    <div className='App w-screen h-screen flex flex-row justify-around'>
       <MonthCalendar />
     </div>
   )
