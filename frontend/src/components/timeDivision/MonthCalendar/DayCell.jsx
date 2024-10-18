@@ -2,17 +2,17 @@ import React from "react"
 
 function DayCell({ day }) {
   return (
-    <td className='border border-black h-1/5'>
-      <div className='block text-ellipsis overflow-hidden whitespace-nowrap'>
+    <td className='border text-xs  border-stone-600'>
+      <div className='h-1/4 block text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-200'>
         {day}
       </div>
-      <div className='block text-ellipsis overflow-hidden whitespace-nowrap'>
+      <div className='h-1/4 block text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-200'>
         row1
       </div>
-      <div className='block text-ellipsis overflow-hidden whitespace-nowrap'>
+      <div className='h-1/4 block text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-200'>
         row2
       </div>
-      <div className='block text-ellipsis overflow-hidden whitespace-nowrap'>
+      <div className='h-1/4 block text-ellipsis overflow-hidden whitespace-nowrap'>
         row3
       </div>
     </td>
