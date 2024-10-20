@@ -1,0 +1,43 @@
+:root {
+  --mobile: 320px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --desktop: 1280px;
+}
+
+.carousel-window {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-47%);
+}
+@media (min-width: 320px) {
+  .carousel-window {
+    font-size: 0.3rem;
+    color: aliceblue;
+    width: 65%;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel-window {
+    font-size: 0.4rem;
+    /* height: 50%; */
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-window {
+    font-size: 0.7rem;
+    /* height: 60%; */
+    width: 60%;
+  }
+}
+@media (min-width: 1280px) {
+  .carousel-window {
+    font-size: 0.8rem;
+    /* height: 70%; */
+    width: 80%;
+  }
+}

@@ -4,7 +4,7 @@ import CaledarCarousel from "./components/timeDivision/MonthCalendar/CaledarCaro
 
 function App() {
   return (
-    <div className='App w-screen h-screen flex relative justify-center items-center z-50'>
+    <div className='App dark:bg-slate-800  w-screen h-screen '>
       <CaledarCarousel />
     </div>
   )
