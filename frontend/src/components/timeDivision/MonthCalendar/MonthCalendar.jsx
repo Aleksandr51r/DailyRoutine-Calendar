@@ -33,7 +33,7 @@ function MonthCalendar({ shift }) {
         {monthDetails.nameOfMonth}
       </div>
       <table className='w-full h-full table-fixed border-collapse rounder'>
-        <thead className='h-/12'>
+        <thead className='h-1/12'>
           <tr className='w-full '>
             {namesOfDays.map((day, index) => (
               <th key={index} className='w-min w-1/7'>

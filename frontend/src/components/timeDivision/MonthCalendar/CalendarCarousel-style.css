@@ -4,40 +4,278 @@
   --laptop: 1024px;
   --desktop: 1280px;
 }
-
+/*
+ .calendar-carousel-left,
+.calendar-carousel-center,
+.calendar-carousel-right {
+  transition: transform 0.5s ease;
+}
+*/
 .carousel-window {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50%;
-  transform: translateX(-47%);
+  transform: translateX(-50%);
+  color: aliceblue;
 }
+
+.calendar-carousel-center {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation: soarCenter 50s infinite;
+}
+.carousel-window {
+  font-size: 0.3rem;
+  border: 1px solid rgb(0, 77, 128);
+  height: 40%;
+  width: 55%;
+}
+
 @media (min-width: 320px) {
+  /*mobile*/
   .carousel-window {
     font-size: 0.3rem;
-    color: aliceblue;
-    width: 65%;
+    border: 1px solid green;
+  }
+  .calendar-carousel-center {
+    height: 100%;
+    width: 100%;
+  }
+  .calendar-carousel-left {
+    animation: soarLeftForLitle 12s infinite;
+  }
+  .calendar-carousel-right {
+    animation: soarRightForLitle 13s infinite;
   }
 }
 
 @media (min-width: 768px) {
+  /*tablet*/
   .carousel-window {
-    font-size: 0.4rem;
-    /* height: 50%; */
-    width: 50%;
+    font-size: 0.3rem;
+    border: 1px solid red;
+  }
+
+  .calendar-carousel-right {
+    animation: soarRightForMedium 13s infinite;
+  }
+  .calendar-carousel-left {
+    animation: soarLeftForMedium 12s infinite;
   }
 }
-
 @media (min-width: 1024px) {
+  /*laptop*/
   .carousel-window {
-    font-size: 0.7rem;
-    /* height: 60%; */
-    width: 60%;
+    font-size: 0.4rem;
+    border: 1px solid rgb(217, 255, 0);
+  }
+  .calendar-carousel-center {
+    height: 150%;
+  }
+  .calendar-carousel-right {
+    animation: soarRightForLarge 12s infinite;
+  }
+  .calendar-carousel-left {
+    animation: soarLeftForLarge 13s infinite;
   }
 }
 @media (min-width: 1280px) {
+  /*desktop*/
   .carousel-window {
-    font-size: 0.8rem;
-    /* height: 70%; */
-    width: 80%;
+    font-size: 0.6rem;
+    border: 1px solid rgb(4, 0, 255);
+  }
+  .calendar-carousel-right {
+    animation: soarRightForLargeX 13s infinite;
+  }
+  .calendar-carousel-left {
+    animation: soarLeftForLargeX 12s infinite;
+  }
+}
+@media (min-width: 1680px) {
+  /*desktop*/
+  .carousel-window {
+    font-size: 1rem;
+  }
+}
+@keyframes soarCenter {
+  0% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+  25% {
+    transform: translateX(-49%) translateY(-49%);
+  }
+  75% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+  75% {
+    transform: translateX(-51%) translateY(-51%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+@keyframes soarLeftForLitle {
+  0% {
+    transform: perspective(100px) rotateY(-10deg) translateX(-50%)
+      translateY(5%);
+  }
+  25% {
+    transform: perspective(95px) rotateY(-10deg) translateX(-51%) translateY(5%);
+  }
+  75% {
+    transform: perspective(100px) rotateY(-11deg) translateX(-50%)
+      translateY(5%);
+  }
+  75% {
+    transform: perspective(105px) rotateY(-10deg) translateX(-49%)
+      translateY(5%);
+  }
+  100% {
+    transform: perspective(100px) rotateY(-10deg) translateX(-50%)
+      translateY(5%);
+  }
+}
+
+@keyframes soarRightForLitle {
+  0% {
+    transform: perspective(100px) rotateY(10deg) translateX(50%) translateY(5%);
+  }
+  25% {
+    transform: perspective(95px) rotateY(10deg) translateX(49%) translateY(4%);
+  }
+  50% {
+    transform: perspective(100px) rotateY(9deg) translateX(50%) translateY(5%);
+  }
+  75% {
+    transform: perspective(105px) rotateY(10deg) translateX(51%) translateY(6%);
+  }
+  100% {
+    transform: perspective(100px) rotateY(10deg) translateX(50%) translateY(5%);
+  }
+}
+
+@keyframes soarLeftForMedium {
+  0% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-70%)
+      translateY(10%);
+  }
+  25% {
+    transform: perspective(200px) rotateY(-12deg) translateX(-69%)
+      translateY(9%);
+  }
+  50% {
+    transform: perspective(210px) rotateY(-10deg) translateX(-70%)
+      translateY(10%);
+  }
+  75% {
+    transform: perspective(190px) rotateY(-8deg) translateX(-71%)
+      translateY(11%);
+  }
+  100% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-70%)
+      translateY(10%);
+  }
+}
+
+@keyframes soarRightForMedium {
+  0% {
+    transform: perspective(200px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+  25% {
+    transform: perspective(190px) rotateY(9deg) translateX(70%) translateY(11%);
+  }
+  50% {
+    transform: perspective(200px) rotateY(10deg) translateX(69%) translateY(10%);
+  }
+  75% {
+    transform: perspective(215px) rotateY(11deg) translateX(71%) translateY(9%);
+  }
+  100% {
+    transform: perspective(200px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+}
+
+@keyframes soarLeftForLarge {
+  0% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-65%)
+      translateY(10%);
+  }
+  25% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-66%)
+      translateY(11%);
+  }
+  50% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-65%)
+      translateY(10%);
+  }
+  75% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-64%)
+      translateY(9%);
+  }
+  100% {
+    transform: perspective(200px) rotateY(-10deg) translateX(-65%)
+      translateY(10%);
+  }
+}
+
+@keyframes soarRightForLarge {
+  0% {
+    transform: perspective(200px) rotateY(10deg) translateX(65%) translateY(10%);
+  }
+  25% {
+    transform: perspective(200px) rotateY(10deg) translateX(66%) translateY(11%);
+  }
+  50% {
+    transform: perspective(200px) rotateY(10deg) translateX(65%) translateY(10%);
+  }
+  75% {
+    transform: perspective(200px) rotateY(10deg) translateX(64%) translateY(9%);
+  }
+  100% {
+    transform: perspective(200px) rotateY(10deg) translateX(65%) translateY(10%);
+  }
+}
+
+@keyframes soarLeftForLargeX {
+  0% {
+    transform: perspective(300px) rotateY(-10deg) translateX(-70%)
+      translateY(10%);
+  }
+  25% {
+    transform: perspective(300px) rotateY(-10deg) translateX(-69%)
+      translateY(10%);
+  }
+  50% {
+    transform: perspective(300px) rotateY(-10deg) translateX(-70%)
+      translateY(11%);
+  }
+  75% {
+    transform: perspective(300px) rotateY(-10deg) translateX(-75%)
+      translateY(9%);
+  }
+  100% {
+    transform: perspective(300px) rotateY(-10deg) translateX(-70%)
+      translateY(10%);
+  }
+}
+
+@keyframes soarRightForLargeX {
+  0% {
+    transform: perspective(300px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+  25% {
+    transform: perspective(300px) rotateY(10deg) translateX(74%) translateY(9%);
+  }
+  50% {
+    transform: perspective(300px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+  75% {
+    transform: perspective(300px) rotateY(10deg) translateX(68%) translateY(11%);
+  }
+  100% {
+    transform: perspective(300px) rotateY(10deg) translateX(70%) translateY(10%);
   }
 }

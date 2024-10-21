@@ -8,7 +8,7 @@
 }
 
 .day-cell:hover {
-  transform: perspective(900px) scale(2.05);
+  transform: perspective(900px) scale(1.05);
   transition: transform 0.25s ease-in-out;
   background-color: #475569;
   outline: 1px solid #00d9ff;
