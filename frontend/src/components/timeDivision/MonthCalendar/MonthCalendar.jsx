@@ -2,35 +2,33 @@ import React, { useEffect, useState } from "react"
 import WeekLine from "./WeekLine"
 import calculateMonthDetails, {
   namesOfDays,
-  changingMonth,
+  currentMonthDayStyle,
 } from "./Math/TimeMath"
 
 function MonthCalendar({ shift }) {
+  const [isCurrentMonth, setIsCurrenMonth] = useState(false)
   const date = new Date()
   const dateShifted = new Date(date.getFullYear(), date.getMonth() + shift, 1)
-
   const [currentDate, setCurrentDate] = useState(dateShifted)
   const [monthDetails, setMonthDetails] = useState(
     calculateMonthDetails(currentDate)
   )
-  const weeksQnty = calculateMonthDetails.weeks
-
+  const weeksQnty = Object.keys(monthDetails.weeks).length
   useEffect(() => {
     setMonthDetails(calculateMonthDetails(currentDate))
   }, [currentDate])
 
-  const handleShowNextMonth = () => {
-    setCurrentDate(changingMonth(currentDate, 1))
+  const currentCount = monthDetails.currentMonthDayStyle
+
+  const handleCurrentMonth = () => {
+    setIsCurrenMonth(!isCurrentMonth)
   }
 
-  const handleShowPreviousMonth = () => {
-    setCurrentDate(changingMonth(currentDate, -1))
-  }
-
+  console.log(" !!!!!!!!!!  ", currentCount)
   return (
     <div className='h-full w-full flex flex-col items-center self-center '>
-      <div className='w-20 text-center dark:text-cyan-100'>
-        {monthDetails.nameOfMonth}
+      <div className='w-50 text-base  text-center dark:text-cyan-100'>
+        {monthDetails.nameOfMonth + " " + monthDetails.year}
       </div>
       <table className='w-full h-full table-fixed border-collapse rounder'>
         <thead className='h-1/12'>
@@ -49,7 +47,11 @@ function MonthCalendar({ shift }) {
             <WeekLine
               key={weekIndex}
               className={`h-1/${weeksQnty} w-full`}
+              weeksQnty={`${weeksQnty}`}
               week={monthDetails.weeks[weekIndex]}
+              currentMonth={isCurrentMonth}
+              handleCurrentMonth={handleCurrentMonth}
+              currentCount={currentCount}
             />
           ))}
         </tbody>

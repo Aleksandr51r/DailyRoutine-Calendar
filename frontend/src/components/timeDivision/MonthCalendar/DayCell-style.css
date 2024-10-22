@@ -4,17 +4,29 @@
   background-color: #475569;
   transition: transform 0.5s ease-in-out;
   /* outline: 1px solid #06b6d4; */
-  outline: 1px solid #069bb6;
+  outline: 1px solid #667072;
 }
 
 .day-cell:hover {
   transform: perspective(900px) scale(1.05);
   transition: transform 0.25s ease-in-out;
   background-color: #475569;
-  outline: 1px solid #00d9ff;
+  outline: 1px solid #cccfcf;
   outline-offset: -1px;
   box-shadow: 0px 10px 10px 10px rgb(255, 255, 255);
   cursor: pointer;
   z-index: 30;
   border-radius: 1px;
+}
+
+.current {
+  background-color: #424e5f;
+}
+.not-current {
+  background-color: #2f3135;
+  filter: blur(0.6px);
+  opacity: 0.5;
+}
+.week-end {
+  background-color: #434549;
 }

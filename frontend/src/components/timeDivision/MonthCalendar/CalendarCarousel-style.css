@@ -13,7 +13,7 @@
 */
 .carousel-window {
   position: absolute;
-  top: 15%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   color: aliceblue;
@@ -26,17 +26,17 @@
   animation: soarCenter 50s infinite;
 }
 .carousel-window {
-  font-size: 0.3rem;
   border: 1px solid rgb(0, 77, 128);
-  height: 40%;
-  width: 55%;
+  height: 50%;
+  width: 50%;
 }
 
 @media (min-width: 320px) {
   /*mobile*/
   .carousel-window {
-    font-size: 0.3rem;
+    font-size: 0.45rem;
     border: 1px solid green;
+    height: 50%;
   }
   .calendar-carousel-center {
     height: 100%;
@@ -48,12 +48,15 @@
   .calendar-carousel-right {
     animation: soarRightForLitle 13s infinite;
   }
+  .day-cell-row {
+    height: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
   /*tablet*/
   .carousel-window {
-    font-size: 0.3rem;
+    font-size: 0.5rem;
     border: 1px solid red;
   }
 
@@ -63,21 +66,25 @@
   .calendar-carousel-left {
     animation: soarLeftForMedium 12s infinite;
   }
+  .day-cell-row {
+    height: 1rem;
+  }
 }
 @media (min-width: 1024px) {
   /*laptop*/
   .carousel-window {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     border: 1px solid rgb(217, 255, 0);
   }
-  .calendar-carousel-center {
-    height: 150%;
-  }
+
   .calendar-carousel-right {
     animation: soarRightForLarge 12s infinite;
   }
   .calendar-carousel-left {
     animation: soarLeftForLarge 13s infinite;
+  }
+  .day-cell-row {
+    height: 1.2rem;
   }
 }
 @media (min-width: 1280px) {
@@ -90,13 +97,28 @@
     animation: soarRightForLargeX 13s infinite;
   }
   .calendar-carousel-left {
-    animation: soarLeftForLargeX 12s infinite;
+    animation: soarLeftForLargeX 12s infinite; 
+  }
+  .day-cell-row {
+    height: 1rem;
   }
 }
 @media (min-width: 1680px) {
   /*desktop*/
   .carousel-window {
     font-size: 1rem;
+  }
+  .day-cell-row {
+    height: 1.8rem;
+  }
+}
+@media (min-width: 2680px) {
+  /*desktop*/
+  .carousel-window {
+    font-size: 1.2rem;
+  }
+  .day-cell-row {
+    height: 2rem;
   }
 }
 @keyframes soarCenter {
@@ -253,7 +275,7 @@
       translateY(11%);
   }
   75% {
-    transform: perspective(300px) rotateY(-10deg) translateX(-75%)
+    transform: perspective(300px) rotateY(-10deg) translateX(-72%)
       translateY(9%);
   }
   100% {
@@ -277,5 +299,30 @@
   }
   100% {
     transform: perspective(300px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: perspective(300px) rotateY(10deg) translateX(70%) translateY(10%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: perspective(320px) rotateY(10deg) translateX(100%)
+      translateY(10%);
   }
 }
