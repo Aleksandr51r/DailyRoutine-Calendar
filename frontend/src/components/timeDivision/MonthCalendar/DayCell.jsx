@@ -10,7 +10,7 @@ function DayCell({
   handleCurrentMonth,
 }) {
   const [isWeekEnd, setIsWeekEnd] = useState(weekend)
-
+  
   return (
     <td
       className={`day-cell z-20 ${currentMonth ? "current" : "not-current"} ${
@@ -21,7 +21,7 @@ function DayCell({
         className={`day-cell-row h-1/${weeksQnty} text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-400 dark:bg-slate-700 dark:text-sky-100 flex flex-row justify-between`}
       >
         <div className='ml-1'>{day}</div>
-        <div className='mr-1'>Num</div>
+        <div className='mr-1'></div>
       </div>
       <div
         className={`day-cell-row  h-1/${weeksQnty} text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-500 dark:text-sky-600`}

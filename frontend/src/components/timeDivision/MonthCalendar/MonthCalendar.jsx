@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react"
 import WeekLine from "./WeekLine"
-import calculateMonthDetails, {
-  namesOfDays,
-  currentMonthDayStyle,
-} from "./Math/TimeMath"
+import calculateMonthDetails, { namesOfDays } from "./Math/TimeMath"
 
 function MonthCalendar({ shift }) {
   const [isCurrentMonth, setIsCurrenMonth] = useState(false)
@@ -18,16 +15,13 @@ function MonthCalendar({ shift }) {
     setMonthDetails(calculateMonthDetails(currentDate))
   }, [currentDate])
 
-  const currentCount = monthDetails.currentMonthDayStyle
-
   const handleCurrentMonth = () => {
     setIsCurrenMonth(!isCurrentMonth)
   }
 
-  console.log(" !!!!!!!!!!  ", currentCount)
   return (
     <div className='h-full w-full flex flex-col items-center self-center '>
-      <div className='w-50 text-base  text-center dark:text-cyan-100'>
+      <div className='w-50 text-base  text-center'>
         {monthDetails.nameOfMonth + " " + monthDetails.year}
       </div>
       <table className='w-full h-full table-fixed border-collapse rounder'>
@@ -42,17 +36,20 @@ function MonthCalendar({ shift }) {
             ))}
           </tr>
         </thead>
-        <tbody className='h-11/12 w-full dark:bg-slate-600 shadow-2xl shadow-slate-600 overflow-visible'>
-          {Object.keys(monthDetails.weeks).map((_, weekIndex) => (
-            <WeekLine
-              key={weekIndex}
-              className={`h-1/${weeksQnty} w-full`}
-              weeksQnty={`${weeksQnty}`}
-              week={monthDetails.weeks[weekIndex]}
-              currentMonth={isCurrentMonth}
-              handleCurrentMonth={handleCurrentMonth}
-              currentCount={currentCount}
-            />
+        <tbody className='h-11/12 w-full dark:bg-slate-600 shadow-2xl shadow-slate-600 overflow-visible relative'>
+          {Object.keys(monthDetails.weeks).map((week, weekIndex) => (
+            <>
+              <div className='week-number absolute  left-[-5%]'>{week}</div>
+              {console.log("!!!!!!!!!!!!", week)}
+              <WeekLine
+                key={weekIndex}
+                className={`h-1/${weeksQnty} w-full`}
+                weeksQnty={`${weeksQnty}`}
+                week={monthDetails.weeks[week].daysOfWeek}
+                currentMonth={true}
+                handleCurrentMonth={handleCurrentMonth}
+              />
+            </>
           ))}
         </tbody>
       </table>

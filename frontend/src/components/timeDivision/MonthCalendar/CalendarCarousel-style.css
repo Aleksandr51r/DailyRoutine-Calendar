@@ -26,7 +26,6 @@
   animation: soarCenter 50s infinite;
 }
 .carousel-window {
-  border: 1px solid rgb(0, 77, 128);
   height: 50%;
   width: 50%;
 }
@@ -35,7 +34,6 @@
   /*mobile*/
   .carousel-window {
     font-size: 0.45rem;
-    border: 1px solid green;
     height: 50%;
   }
   .calendar-carousel-center {
@@ -57,7 +55,6 @@
   /*tablet*/
   .carousel-window {
     font-size: 0.5rem;
-    border: 1px solid red;
   }
 
   .calendar-carousel-right {
@@ -74,7 +71,6 @@
   /*laptop*/
   .carousel-window {
     font-size: 0.5rem;
-    border: 1px solid rgb(217, 255, 0);
   }
 
   .calendar-carousel-right {
@@ -91,13 +87,12 @@
   /*desktop*/
   .carousel-window {
     font-size: 0.6rem;
-    border: 1px solid rgb(4, 0, 255);
   }
   .calendar-carousel-right {
     animation: soarRightForLargeX 13s infinite;
   }
   .calendar-carousel-left {
-    animation: soarLeftForLargeX 12s infinite; 
+    animation: soarLeftForLargeX 12s infinite;
   }
   .day-cell-row {
     height: 1rem;
@@ -312,7 +307,6 @@
     transform: translateY(0);
   }
 }
-
 
 @keyframes fadeOut {
   0% {

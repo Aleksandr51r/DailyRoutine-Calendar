@@ -1,14 +1,8 @@
 import React, { useState } from "react"
 import DayCell from "./DayCell"
-import { useSSR } from "react-i18next"
 
-function WeekLine({
-  week,
-  weeksQnty,
-  currentMonth,
-  handleCurrentMonth,
-  currentCount,
-}) {
+function WeekLine({ week, weeksQnty, handleCurrentMonth, currentMonth }) {
+
   const [current, setCurrent] = useState(false)
 
   return (
@@ -19,7 +13,8 @@ function WeekLine({
           day={day}
           weeksQnty={`${weeksQnty}`}
           weekend={index >= 5 ? true : false}
-          currentMonth={true}
+          currentMonth={currentMonth ? true : false}
+          handleCurrentMonth={handleCurrentMonth}
         />
       ))}
     </tr>
