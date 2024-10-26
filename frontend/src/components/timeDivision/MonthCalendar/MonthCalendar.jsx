@@ -20,7 +20,7 @@ function MonthCalendar({ shift }) {
   }
 
   return (
-    <div className='h-full w-full flex flex-col items-center self-center '>
+    <div className='h-full w-full flex flex-col items-center self-center  select-none'>
       <div className='w-50 text-base  text-center'>
         {monthDetails.nameOfMonth + " " + monthDetails.year}
       </div>
@@ -29,7 +29,7 @@ function MonthCalendar({ shift }) {
           <tr className='w-full '>
             {namesOfDays.map((day, index) => (
               <th key={index} className='w-min w-1/7'>
-                <span className=' block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[150%] tablet:text-xs laptop:text desktop:text-sm  whitespace-nowrap dark:text-cyan-100'>
+                <span className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'>
                   {day}
                 </span>
               </th>
@@ -37,20 +37,30 @@ function MonthCalendar({ shift }) {
           </tr>
         </thead>
         <tbody className='h-11/12 w-full dark:bg-slate-600 shadow-2xl shadow-slate-600 overflow-visible relative'>
-          {Object.keys(monthDetails.weeks).map((week, weekIndex) => (
-            <>
-              <div className='week-number absolute  left-[-5%]'>{week}</div>
-              {console.log("!!!!!!!!!!!!", week)}
-              <WeekLine
-                key={weekIndex}
-                className={`h-1/${weeksQnty} w-full`}
-                weeksQnty={`${weeksQnty}`}
-                week={monthDetails.weeks[week].daysOfWeek}
-                currentMonth={true}
-                handleCurrentMonth={handleCurrentMonth}
-              />
-            </>
-          ))}
+          {Object.keys(monthDetails.weeks)
+            .sort((a, b) => {
+              if (monthDetails.weeks[a].year !== monthDetails.weeks[b].year) {
+                return monthDetails.weeks[a].year - monthDetails.weeks[b].year
+              }
+              return (
+                monthDetails.weeks[a].weekNumber -
+                monthDetails.weeks[b].weekNumber
+              )
+            })
+            .map((week, weekIndex) => (
+              <>
+                <div className='week-number italic absolute mobile:text-sm laptop:text-sm shadow-2xl shadow-slate-100'>
+                  {week}
+                </div>
+
+                <WeekLine
+                  key={weekIndex}
+                  className={`h-1/${weeksQnty} w-full`}
+                  weeksQnty={`${weeksQnty}`}
+                  week={monthDetails.weeks[week].daysOfWeek}
+                />
+              </>
+            ))}
         </tbody>
       </table>
     </div>

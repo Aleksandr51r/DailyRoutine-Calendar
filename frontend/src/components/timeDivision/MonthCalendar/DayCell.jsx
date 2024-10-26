@@ -9,12 +9,11 @@ function DayCell({
   currentMonth,
   handleCurrentMonth,
 }) {
-  const [isWeekEnd, setIsWeekEnd] = useState(weekend)
-  
+
   return (
     <td
       className={`day-cell z-20 ${currentMonth ? "current" : "not-current"} ${
-        isWeekEnd ? "week-end" : "work-day"
+        (weekend && currentMonth) ? "week-end" : "work-day"
       }`}
     >
       <div

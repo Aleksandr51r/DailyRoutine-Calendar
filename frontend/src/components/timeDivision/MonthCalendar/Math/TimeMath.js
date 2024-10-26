@@ -39,8 +39,8 @@ function calculateMonthDetails(date) {
     date.getFullYear(),
     date.getMonth() - 1,
     1
-  ).getMonth()
-  const prevMonthLength = months[staticPreviousMonth].days
+  )
+  const prevMonthLength = months[staticPreviousMonth.getMonth()].days
   const firstDayOfStaticWeek = ((staticDate.getDay() + 6) % 7) + 1 // from wich day week start
   const PreviousMonthStartFromDate =
     prevMonthLength - (firstDayOfStaticWeek - 1)
@@ -68,72 +68,86 @@ function calculateMonthDetails(date) {
     (_, i) => i + 1
   )
 
-  // const previousMonthObjects = restOfPrevMonth.reduce((obj, day) => {
-  //   return {
-  //     ...obj,
-  //     [day]: { isCurrent: false },
-  //   }
-  // }, {})
+  const previousMonthObjects = restOfPrevMonth.reduce((obj, day) => {
+    return {
+      ...obj,
+      [day]: {
+        day,
+        month: months[staticPreviousMonth.getMonth()].name,
+        isCurrent: false,
+      },
+    }
+  }, {})
 
-  // const currentMonthObjects = currentMonth.reduce((obj, day) => {
-  //   return {
-  //     ...obj,
-  //     [day]: { isCurrent: true },
-  //   }
-  // }, {})
+  const currentMonthObjects = currentMonth.reduce((obj, day) => {
+    return {
+      ...obj,
+      [day]: {
+        day,
+        month: months[staticDate.getMonth()].name,
+        isCurrent: true,
+      },
+    }
+  }, {})
 
-  // const nextMonthObjects = nextMonth.reduce((obj, day) => {
-  //   return {
-  //     ...obj,
-  //     [day]: { isCurrent: false },
-  //   }
-  // }, {})
+  const nextMonthObjects = nextMonth.reduce((obj, day) => {
+    return {
+      ...obj,
+      [day]: {
+        day,
+        month: months[staticDate.getMonth() + 1]?.name,
+        isCurrent: false,
+      },
+    }
+  }, {})
 
-  // const allDayss = {
-  //   ...previousMonthObjects,
-  //   ...currentMonthObjects,
-  //   ...nextMonthObjects,
-  // }
+  const allDayss = {
+    prev: { ...previousMonthObjects },
+    current: { ...currentMonthObjects },
+    next: { ...nextMonthObjects },
+  }
+  const allDays = [
+    ...Object.values(previousMonthObjects),
+    ...Object.values(currentMonthObjects),
+    ...Object.values(nextMonthObjects),
+  ]
 
-  const allDays = [...restOfPrevMonth, ...currentMonth, ...nextMonth]
   console.log("allDays", allDays)
+  // const allDays = [...restOfPrevMonth, ...currentMonth, ...nextMonth]
 
   const weeksArr = []
-  const weeks = {}
+  console.log("weeksArr", weeksArr)
   for (let i = 0; i < quantityWeeks; i++) {
     weeksArr.push(allDays.slice(i * 7, i * 7 + 7))
   }
+
+  const weeks = {}
+  
   for (let i = 0; i < quantityWeeks; i++) {
-    // Получаем массив дней текущей недели
     const daysOfWeek = weeksArr[i]
-
-    // Пропускаем пустые недели
-    if (daysOfWeek.length === 0) {
-      continue
-    }
-
-    // Определяем номер недели для первого дня текущей недели
-    const firstDay = daysOfWeek[0]
+    const firstDay = daysOfWeek[0].day
     console.log("firstDay", firstDay)
-
-    // Определяем месяц в зависимости от первого дня
-    const monthOffset = firstDay === 1 ? 0 : i === 0 ? -1 : 0
-
-    // Создаем дату на основе первого дня недели
-    const currentDayDate = new Date(
-      date.getFullYear(),
-      date.getMonth() + monthOffset,
-      firstDay
-    )
-
+    // const days = {}
+    // console.log("daysOfWeek", daysOfWeek)
+    // for (let j = 0; j < 7; j++) {
+    //   const day = daysOfWeek[j].day
+    //   days[day] = daysOfWeek[j]
+    // }
+    const monthOffset = firstDay === 1 ? 0 : i === 0 ? -1 : 0 // To add a previous month
+    const month = date.getMonth() + monthOffset
+    const year = date.getFullYear()
+    const currentDayDate = new Date(year, month, firstDay)
     const weekNumber = currentDayDate.getWeek()
-    console.log("weekNumber", currentDayDate, weekNumber)
-
-    // Добавляем все дни недели в соответствующий массив
-    weeks[weekNumber] = { daysOfWeek, year: currentDayDate.getFullYear() }
+    
+    weeks[weekNumber] = {
+      daysOfWeek,
+      month: months[month] ?? months[0], // Problem of dec-jan
+      year:
+        currentDayDate.getFullYear() +
+        (currentDayDate.getMonth() + weekNumber === 12 ? 1 : 0),
+    }
   }
 
-  console.log("weeksArr", weeksArr)
   console.log("weeks", weeks)
   const year = date.getFullYear()
   return {

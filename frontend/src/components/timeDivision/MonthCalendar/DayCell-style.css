@@ -22,9 +22,10 @@
 .current {
   background-color: #424e5f;
 }
+
 .not-current {
-  background-color: #2f3135;
-  filter: blur(0.6px);
+  background-color: #141414;
+  
   opacity: 0.5;
 }
 .week-end {

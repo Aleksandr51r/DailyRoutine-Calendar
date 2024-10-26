@@ -9,7 +9,7 @@ export const daysOfWeek = {
 }
 
 const year = new Date().getFullYear()
-const addYear = (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) ? 1 : 0;
+const addYear = (year % 4 === 0 && (year % 100 === 0 || year % 400 === 0)) ? 1 : 0;
 const staticJanuaryDate = new Date(new Date().getFullYear(), 0, 1)
 const staticLastDecemberDate = new Date(new Date().getFullYear(), 11, 31)
 const addFirstWeek = [1, 2, 3, 4].includes(staticJanuaryDate.getDay()) ? 1 : 0

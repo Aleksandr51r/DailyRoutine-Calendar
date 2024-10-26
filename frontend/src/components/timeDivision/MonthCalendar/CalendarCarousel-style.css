@@ -29,6 +29,12 @@
   height: 50%;
   width: 50%;
 }
+.week-number {
+  left: -25px;
+}
+.day-cell-row {
+  height: 1.25rem;
+}
 
 @media (min-width: 320px) {
   /*mobile*/
@@ -38,7 +44,7 @@
   }
   .calendar-carousel-center {
     height: 100%;
-    width: 100%;
+    width: 130%;
   }
   .calendar-carousel-left {
     animation: soarLeftForLitle 12s infinite;
@@ -46,15 +52,21 @@
   .calendar-carousel-right {
     animation: soarRightForLitle 13s infinite;
   }
-  .day-cell-row {
-    height: 1rem;
+
+  .week-number {
+    font-size: 1rem;
   }
 }
-
+@media (min-width: 540px) {
+}
 @media (min-width: 768px) {
   /*tablet*/
   .carousel-window {
     font-size: 0.5rem;
+  }
+  .calendar-carousel-center {
+    height: 100%;
+    width: 100%;
   }
 
   .calendar-carousel-right {
@@ -63,9 +75,7 @@
   .calendar-carousel-left {
     animation: soarLeftForMedium 12s infinite;
   }
-  .day-cell-row {
-    height: 1rem;
-  }
+
 }
 @media (min-width: 1024px) {
   /*laptop*/
@@ -80,8 +90,9 @@
     animation: soarLeftForLarge 13s infinite;
   }
   .day-cell-row {
-    height: 1.2rem;
+    height: 1.6rem;
   }
+
 }
 @media (min-width: 1280px) {
   /*desktop*/
@@ -94,27 +105,21 @@
   .calendar-carousel-left {
     animation: soarLeftForLargeX 12s infinite;
   }
-  .day-cell-row {
-    height: 1rem;
-  }
+
 }
 @media (min-width: 1680px) {
   /*desktop*/
   .carousel-window {
-    font-size: 1rem;
+    font-size: 0.65rem;
   }
-  .day-cell-row {
-    height: 1.8rem;
-  }
+
 }
 @media (min-width: 2680px) {
   /*desktop*/
   .carousel-window {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
-  .day-cell-row {
-    height: 2rem;
-  }
+
 }
 @keyframes soarCenter {
   0% {
@@ -136,41 +141,42 @@
 
 @keyframes soarLeftForLitle {
   0% {
-    transform: perspective(100px) rotateY(-10deg) translateX(-50%)
+    transform: perspective(100px) rotateY(-10deg) translateX(-110%)
       translateY(5%);
   }
   25% {
-    transform: perspective(95px) rotateY(-10deg) translateX(-51%) translateY(5%);
-  }
-  75% {
-    transform: perspective(100px) rotateY(-11deg) translateX(-50%)
+    transform: perspective(95px) rotateY(-10deg) translateX(-111%)
       translateY(5%);
   }
   75% {
-    transform: perspective(105px) rotateY(-10deg) translateX(-49%)
+    transform: perspective(100px) rotateY(-11deg) translateX(-110%)
+      translateY(5%);
+  }
+  75% {
+    transform: perspective(105px) rotateY(-10deg) translateX(-109%)
       translateY(5%);
   }
   100% {
-    transform: perspective(100px) rotateY(-10deg) translateX(-50%)
+    transform: perspective(100px) rotateY(-10deg) translateX(-110%)
       translateY(5%);
   }
 }
 
 @keyframes soarRightForLitle {
   0% {
-    transform: perspective(100px) rotateY(10deg) translateX(50%) translateY(5%);
+    transform: perspective(100px) rotateY(10deg) translateX(110%) translateY(5%);
   }
   25% {
-    transform: perspective(95px) rotateY(10deg) translateX(49%) translateY(4%);
+    transform: perspective(95px) rotateY(10deg) translateX(109%) translateY(4%);
   }
   50% {
-    transform: perspective(100px) rotateY(9deg) translateX(50%) translateY(5%);
+    transform: perspective(100px) rotateY(9deg) translateX(110%) translateY(5%);
   }
   75% {
-    transform: perspective(105px) rotateY(10deg) translateX(51%) translateY(6%);
+    transform: perspective(105px) rotateY(10deg) translateX(111%) translateY(6%);
   }
   100% {
-    transform: perspective(100px) rotateY(10deg) translateX(50%) translateY(5%);
+    transform: perspective(100px) rotateY(10deg) translateX(110%) translateY(5%);
   }
 }
 
