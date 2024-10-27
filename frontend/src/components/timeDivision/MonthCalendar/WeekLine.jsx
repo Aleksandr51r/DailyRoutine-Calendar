@@ -1,11 +1,9 @@
 import React, { useState } from "react"
 import DayCell from "./DayCell"
 
-function WeekLine({ week, weeksQnty, handleCurrentMonth, currentMonth }) {
-  const [current, setCurrent] = useState(false)
-
+function WeekLine({ week, weeksQnty, handleOpenNewDay }) {
   return (
-    <tr className='relative w-full'>
+    <tr className={`relative`}>
       {Object.keys(week).map((index) => (
         <DayCell
           key={index}
@@ -13,6 +11,7 @@ function WeekLine({ week, weeksQnty, handleCurrentMonth, currentMonth }) {
           weeksQnty={`${weeksQnty}`}
           weekend={index >= 5 ? true : false}
           currentMonth={week[index].isCurrent}
+          handleOpenNewDay={handleOpenNewDay}
         />
       ))}
     </tr>

@@ -12,8 +12,10 @@
 }
 */
 .carousel-window {
+  height: 50%;
+  width: 50%;
   position: absolute;
-  top: 5%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   color: aliceblue;
@@ -25,24 +27,23 @@
   transform: translateX(-50%) translateY(-50%);
   animation: soarCenter 50s infinite;
 }
-.carousel-window {
-  height: 50%;
-  width: 50%;
-}
+
 .week-number {
-  left: -25px;
-}
-.day-cell-row {
-  height: 1.25rem;
+  left: -22.5px;
 }
 
 @media (min-width: 320px) {
   /*mobile*/
   .carousel-window {
     font-size: 0.45rem;
-    height: 50%;
+    height: 30%;
   }
   .calendar-carousel-center {
+    height: 100%;
+    width: 130%;
+  }
+  .calendar-carousel-left,
+  .calendar-carousel-right {
     height: 100%;
     width: 130%;
   }
@@ -56,16 +57,20 @@
   .week-number {
     font-size: 1rem;
   }
+  .day-cell-row {
+    height: 20%;
+  }
 }
 @media (min-width: 540px) {
 }
 @media (min-width: 768px) {
   /*tablet*/
   .carousel-window {
+    height: 50%;
     font-size: 0.5rem;
   }
   .calendar-carousel-center {
-    height: 100%;
+    height: 110%;
     width: 100%;
   }
 
@@ -75,11 +80,11 @@
   .calendar-carousel-left {
     animation: soarLeftForMedium 12s infinite;
   }
-
 }
 @media (min-width: 1024px) {
   /*laptop*/
   .carousel-window {
+    height: 80%;
     font-size: 0.5rem;
   }
 
@@ -89,10 +94,6 @@
   .calendar-carousel-left {
     animation: soarLeftForLarge 13s infinite;
   }
-  .day-cell-row {
-    height: 1.6rem;
-  }
-
 }
 @media (min-width: 1280px) {
   /*desktop*/
@@ -105,21 +106,18 @@
   .calendar-carousel-left {
     animation: soarLeftForLargeX 12s infinite;
   }
-
 }
 @media (min-width: 1680px) {
   /*desktop*/
   .carousel-window {
     font-size: 0.65rem;
   }
-
 }
 @media (min-width: 2680px) {
   /*desktop*/
   .carousel-window {
     font-size: 1.5rem;
   }
-
 }
 @keyframes soarCenter {
   0% {

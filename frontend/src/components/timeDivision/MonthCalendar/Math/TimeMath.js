@@ -122,7 +122,7 @@ function calculateMonthDetails(date) {
   }
 
   const weeks = {}
-  
+
   for (let i = 0; i < quantityWeeks; i++) {
     const daysOfWeek = weeksArr[i]
     const firstDay = daysOfWeek[0].day
@@ -138,13 +138,14 @@ function calculateMonthDetails(date) {
     const year = date.getFullYear()
     const currentDayDate = new Date(year, month, firstDay)
     const weekNumber = currentDayDate.getWeek()
-    
+    const currenMonth = currentDayDate.getMonth()
+
     weeks[weekNumber] = {
       daysOfWeek,
       month: months[month] ?? months[0], // Problem of dec-jan
       year:
         currentDayDate.getFullYear() +
-        (currentDayDate.getMonth() + weekNumber === 12 ? 1 : 0),
+        (currenMonth === 2 ? 0 : currenMonth + weekNumber === 12 ? 1 : 0),
     }
   }
 

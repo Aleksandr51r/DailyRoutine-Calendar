@@ -5,6 +5,7 @@
   transition: transform 0.5s ease-in-out;
   /* outline: 1px solid #06b6d4; */
   outline: 1px solid #667072;
+
 }
 
 .day-cell:hover {
@@ -13,21 +14,25 @@
   background-color: #475569;
   outline: 1px solid #cccfcf;
   outline-offset: -1px;
-  box-shadow: 0px 10px 10px 10px rgb(255, 255, 255);
   cursor: pointer;
   z-index: 30;
   border-radius: 1px;
 }
-
+.day-cell-row:first-child {
+  /* background-color: #3d4b5f; */
+  background-color: #343e4e;
+}
 .current {
-  background-color: #424e5f;
+  /* background-color: #424e5f; */
+  background-color: #243044;
 }
 
 .not-current {
-  background-color: #141414;
-  
-  opacity: 0.5;
+  background-color: #36383a;
+  filter: grayscale(50%) brightness(60%);
+  /* opacity: 0.6; */
 }
 .week-end {
-  background-color: #434549;
+  /* background-color: #434549; */
+  background-color: #31415c;
 }
