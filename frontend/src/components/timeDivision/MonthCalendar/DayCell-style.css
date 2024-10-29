@@ -3,9 +3,12 @@
   transform: scale(1);
   background-color: #475569;
   transition: transform 0.5s ease-in-out;
-  /* outline: 1px solid #06b6d4; */
   outline: 1px solid #667072;
-
+  outline: 1px solid #06b6d4;
+  outline: 1px solid #66898f;
+}
+.passed {
+  filter: grayscale(50%);
 }
 
 .day-cell:hover {
@@ -19,20 +22,27 @@
   border-radius: 1px;
 }
 .day-cell-row:first-child {
-  /* background-color: #3d4b5f; */
-  background-color: #343e4e;
+  background-color: #282f3b;
+  background-color: #2c3138;
 }
 .current {
-  /* background-color: #424e5f; */
   background-color: #243044;
+  background-color: #36383a;
+  background-color: #3e444e;
+  z-index: 30;
 }
 
 .not-current {
   background-color: #36383a;
   filter: grayscale(50%) brightness(60%);
-  /* opacity: 0.6; */
+  opacity: 0.7;
 }
 .week-end {
-  /* background-color: #434549; */
-  background-color: #31415c;
+  background-color: #3e444e;
+  background-color: #36383a;
+}
+
+.today {
+  outline: 2px solid red;
+  z-index: 31;
 }

@@ -10,6 +10,25 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
   const [monthDetails, setMonthDetails] = useState(
     calculateMonthDetails(dateShifted)
   )
+
+  const getMonthStatus = (currentDate, shiftedDate) => {
+    if (
+      currentDate.getFullYear() === shiftedDate.getFullYear() &&
+      currentDate.getMonth() === shiftedDate.getMonth()
+    ) {
+      return "currentMonth"
+    } else if (
+      currentDate.getFullYear() < shiftedDate.getFullYear() ||
+      (currentDate.getFullYear() === shiftedDate.getFullYear() &&
+        currentDate.getMonth() < shiftedDate.getMonth())
+    ) {
+      return "nextMonth"
+    } else {
+      return "prevMonth"
+    }
+  }
+
+  console.log("getMonthStatus", getMonthStatus)
   const weeksQnty = Object.keys(monthDetails.weeks).length
 
   // useEffect(() => {
@@ -18,11 +37,11 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
 
   return (
     <>
-      <div className='h-full w-full flex flex-col items-center self-center  select-none'>
+      <div className='h-full w-full flex flex-col items-center self-center select-none'>
         <div className='w-50 text-base  text-center'>
           {monthDetails.nameOfMonth + " " + monthDetails.year}
         </div>
-        <table className='w-full h-full table-fixed border-collapse rounder'>
+        <table className='w-full h-full table-fixed rounder border-collapse'>
           <thead className='h-1/12'>
             <tr className='w-full '>
               {namesOfDays.map((day, index) => (
@@ -50,13 +69,12 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
                   <div className='week-number italic absolute mobile:text-sm laptop:text-sm shadow-2xl shadow-slate-100'>
                     {week}
                   </div>
-
                   <WeekLine
                     key={weekIndex}
-                    className={`h-1/${weeksQnty} w-full`}
                     weeksQnty={`${weeksQnty}`}
                     week={monthDetails.weeks[week].daysOfWeek}
                     handleOpenNewDay={handleOpenNewDay}
+                    getMonthStatus={() => getMonthStatus(date, dateShifted)}
                   />
                 </>
               ))}

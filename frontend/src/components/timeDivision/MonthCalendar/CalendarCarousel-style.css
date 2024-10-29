@@ -32,6 +32,10 @@
   left: -22.5px;
 }
 
+.day-cell-row {
+  height: 20%;
+}
+
 @media (min-width: 320px) {
   /*mobile*/
   .carousel-window {
@@ -57,9 +61,9 @@
   .week-number {
     font-size: 1rem;
   }
-  .day-cell-row {
+  /* .day-cell-row {
     height: 20%;
-  }
+  } */
 }
 @media (min-width: 540px) {
 }

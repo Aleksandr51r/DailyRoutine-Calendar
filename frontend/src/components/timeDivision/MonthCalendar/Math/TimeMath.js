@@ -34,6 +34,7 @@ function calculateMonthDetails(date) {
   }
 
   const staticDate = new Date(date.getFullYear(), date.getMonth(), 1)
+  const currentDate = new Date()
 
   const staticPreviousMonth = new Date(
     date.getFullYear(),
@@ -57,10 +58,6 @@ function calculateMonthDetails(date) {
     (restOfPrevMonth.length + currentMonth.length) / 7
   )
 
-  const weeksNumber = Object.keys(months).slice()
-
-  const whichWeek = 0
-
   const nextMonth = Array.from(
     {
       length: quantityWeeks * 7 - restOfPrevMonth.length - currentMonth.length,
@@ -75,6 +72,7 @@ function calculateMonthDetails(date) {
         day,
         month: months[staticPreviousMonth.getMonth()].name,
         isCurrent: false,
+        isPassed: true,
       },
     }
   }, {})
@@ -86,6 +84,8 @@ function calculateMonthDetails(date) {
         day,
         month: months[staticDate.getMonth()].name,
         isCurrent: true,
+        isPassed: day < currentDate.getDate() ? true : false,
+        currentDay: currentDate.getDate() === day,
       },
     }
   }, {})
@@ -97,6 +97,7 @@ function calculateMonthDetails(date) {
         day,
         month: months[staticDate.getMonth() + 1]?.name,
         isCurrent: false,
+        isPassed: false,
       },
     }
   }, {})

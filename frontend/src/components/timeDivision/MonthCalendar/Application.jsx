@@ -20,7 +20,7 @@ function Application() {
           <Day />
         </>
       ) : null}
-      <div>
+      <div className="h-full w-full">
         <CaledarCarousel handleOpenNewDay={handleOpenNewDay} />
       </div>
     </>
