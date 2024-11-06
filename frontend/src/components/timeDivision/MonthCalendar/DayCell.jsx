@@ -12,7 +12,6 @@ function DayCell({
   isCurrentDay,
   getMonthStatus,
 }) {
-  console.log("isCurrentDay", isCurrentDay)
   const month = getMonthStatus()
   return (
     <td>

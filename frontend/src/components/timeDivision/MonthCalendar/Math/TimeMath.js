@@ -1,10 +1,11 @@
-import { months, daysOfWeek } from "../TimeConstant/TimeConstants"
+import { getDateShifted, daysOfWeek } from "../TimeConstant/TimeConstants"
 
 // This script is released to the public domain and may be used, modified and
 // distributed without restrictions. Attribution not necessary but appreciated.
 // Source: https://weeknumber.net/how-to/javascript
 
 function calculateMonthDetails(date) {
+  const months = getDateShifted(date).months
   // Returns the ISO week of the date.
 
   Date.prototype.getWeek = function () {
@@ -25,7 +26,6 @@ function calculateMonthDetails(date) {
       )
     )
   }
-
   // Returns the four-digit year corresponding to the ISO week of the date.
   Date.prototype.getWeekYear = function () {
     const date = new Date(this.getTime())
@@ -35,17 +35,18 @@ function calculateMonthDetails(date) {
 
   const staticDate = new Date(date.getFullYear(), date.getMonth(), 1)
   const currentDate = new Date()
-
   const staticPreviousMonth = new Date(
     date.getFullYear(),
     date.getMonth() - 1,
     1
   )
+  console.log("staticPreviousMonth", staticPreviousMonth)
   const prevMonthLength = months[staticPreviousMonth.getMonth()].days
   const firstDayOfStaticWeek = ((staticDate.getDay() + 6) % 7) + 1 // from wich day week start
   const PreviousMonthStartFromDate =
     prevMonthLength - (firstDayOfStaticWeek - 1)
   const monthLength = months[staticDate.getMonth()].days
+  console.log("monthLength", monthLength)
 
   // Calculation to fill weeklines with a all days
   const restOfPrevMonth = Array.from(
@@ -113,11 +114,9 @@ function calculateMonthDetails(date) {
     ...Object.values(nextMonthObjects),
   ]
 
-  console.log("allDays", allDays)
   // const allDays = [...restOfPrevMonth, ...currentMonth, ...nextMonth]
 
   const weeksArr = []
-  console.log("weeksArr", weeksArr)
   for (let i = 0; i < quantityWeeks; i++) {
     weeksArr.push(allDays.slice(i * 7, i * 7 + 7))
   }
@@ -127,9 +126,7 @@ function calculateMonthDetails(date) {
   for (let i = 0; i < quantityWeeks; i++) {
     const daysOfWeek = weeksArr[i]
     const firstDay = daysOfWeek[0].day
-    console.log("firstDay", firstDay)
     // const days = {}
-    // console.log("daysOfWeek", daysOfWeek)
     // for (let j = 0; j < 7; j++) {
     //   const day = daysOfWeek[j].day
     //   days[day] = daysOfWeek[j]
@@ -150,7 +147,6 @@ function calculateMonthDetails(date) {
     }
   }
 
-  console.log("weeks", weeks)
   const year = date.getFullYear()
   return {
     weeks,

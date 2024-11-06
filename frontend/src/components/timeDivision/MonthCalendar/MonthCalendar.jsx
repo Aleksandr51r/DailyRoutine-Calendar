@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import WeekLine from "./WeekLine"
 import calculateMonthDetails, { namesOfDays } from "./Math/TimeMath"
+import { getDateShifted } from "./TimeConstant/TimeConstants"
 
 function MonthCalendar({ shift, handleOpenNewDay }) {
+  // const { months, shiftedDate: dateShifted, date } = getDateShifted(shift)
   const date = new Date()
-  const dateShifted = new Date(date.getFullYear(), date.getMonth() + shift, 1)
+  const shiftedDate = new Date(date.getFullYear(), date.getMonth() + shift, 1)
 
-  // const [currentDate, setCurrentDate] = useState(dateShifted)
   const [monthDetails, setMonthDetails] = useState(
-    calculateMonthDetails(dateShifted)
+    calculateMonthDetails(shiftedDate)
   )
 
   const getMonthStatus = (currentDate, shiftedDate) => {
@@ -28,12 +29,7 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
     }
   }
 
-  console.log("getMonthStatus", getMonthStatus)
   const weeksQnty = Object.keys(monthDetails.weeks).length
-
-  // useEffect(() => {
-  //   setMonthDetails(calculateMonthDetails(currentDate))
-  // }, [currentDate])
 
   return (
     <>
@@ -46,7 +42,10 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
             <tr className='w-full '>
               {namesOfDays.map((day, index) => (
                 <th key={index} className='w-min w-1/7'>
-                  <span className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'>
+                  <span
+                    key={index}
+                    className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'
+                  >
                     {day}
                   </span>
                 </th>
@@ -74,7 +73,7 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
                     weeksQnty={`${weeksQnty}`}
                     week={monthDetails.weeks[week].daysOfWeek}
                     handleOpenNewDay={handleOpenNewDay}
-                    getMonthStatus={() => getMonthStatus(date, dateShifted)}
+                    getMonthStatus={() => getMonthStatus(date, shiftedDate)}
                   />
                 </>
               ))}

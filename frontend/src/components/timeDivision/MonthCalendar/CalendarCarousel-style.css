@@ -28,10 +28,6 @@
   animation: soarCenter 50s infinite;
 }
 
-.week-number {
-  left: -22.5px;
-}
-
 .day-cell-row {
   height: 20%;
 }
@@ -57,13 +53,23 @@
   .calendar-carousel-right {
     animation: soarRightForLitle 13s infinite;
   }
-
+  
   .week-number {
+    left: -25px;
     font-size: 1rem;
+    transition: font-size 0.3s ease-in-out;
+  }
+  .week-number:hover {
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-shadow: rgb(0, 225, 255) 1px 0 10px;
+    transition: font-size 0.3s ease-in-out;
   }
   /* .day-cell-row {
     height: 20%;
   } */
+
+
 }
 @media (min-width: 540px) {
 }
@@ -140,6 +146,7 @@
     transform: translateX(-50%) translateY(-50%);
   }
 }
+
 
 @keyframes soarLeftForLitle {
   0% {

@@ -9,6 +9,8 @@
 }
 .passed {
   filter: grayscale(50%);
+  /* filter: blur(0.3px); */
+  filter: brightness(75%);
 }
 
 .day-cell:hover {
@@ -18,7 +20,7 @@
   outline: 1px solid #cccfcf;
   outline-offset: -1px;
   cursor: pointer;
-  z-index: 30;
+  z-index: 32;
   border-radius: 1px;
 }
 .day-cell-row:first-child {
@@ -34,8 +36,10 @@
 
 .not-current {
   background-color: #36383a;
-  filter: grayscale(50%) brightness(60%);
+  background-color: #36383a;
+  filter: grayscale(70%) brightness(40%);
   opacity: 0.7;
+  z-index: 29;
 }
 .week-end {
   background-color: #3e444e;
