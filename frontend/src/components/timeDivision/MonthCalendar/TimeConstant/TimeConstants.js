@@ -13,7 +13,7 @@ function isLeapYear(year) {
 }
 
 export function getDateShifted(date) {
-  console.log("date", date)
+
   // const date = new Date()
   // const shiftedDate = new Date(date.getFullYear(), date.getMonth() + shift, 1)
   const year = date.getFullYear()

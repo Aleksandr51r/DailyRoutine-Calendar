@@ -10,14 +10,15 @@ function DayCell({
   handleOpenNewDay,
   isPassed,
   isCurrentDay,
+  weeksQnty,
   getMonthStatus,
 }) {
   const month = getMonthStatus()
   return (
     <td>
       <div
-        className={`day-cell flex flex-col  
-          h-full justify-stretch
+        className={`day-cell flex flex-col
+          h-[100%] justify-stretch
            ${currentMonth ? "current" : "not-current"} 
            ${weekend && currentMonth ? "week-end" : "work-day"} 
 
@@ -34,22 +35,22 @@ function DayCell({
         onClick={handleOpenNewDay}
       >
         <div
-          className={`day-cell-row text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600  dark:text-sky-100 flex flex-row justify-between`}
+          className={`day-cell-row h-1/5 text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600  dark:text-sky-100 flex flex-row justify-between`}
         >
           <div className='ml-1'>{day}</div>
           <div className='mr-1'></div>
         </div>
         <div
-          className={`day-cell-row  text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
+          className={`day-cell-row  h-1/5 text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
         ></div>
         <div
-          className={`day-cell-row  text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
+          className={`day-cell-row  h-1/5 text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
         ></div>
         <div
-          className={`day-cell-row  text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
+          className={`day-cell-row  h-1/5 text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600 dark:text-sky-600`}
         ></div>
         <div
-          className={`day-cell-row  text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-500 dark:text-cyan-100`}
+          className={`day-cell-row h-1/5  text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-500 dark:text-cyan-100`}
         ></div>
       </div>
     </td>

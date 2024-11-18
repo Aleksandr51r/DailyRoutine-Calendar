@@ -20,4 +20,6 @@ describe("Testing calculateMonthDetails function", () => {
     const details = calculateMonthDetails(date)
     expect(details.weeks).toHaveProperty("52") // Проверить наличие 52-й недели
   })
+
+
 })

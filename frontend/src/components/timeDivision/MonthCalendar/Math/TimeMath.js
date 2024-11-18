@@ -40,13 +40,13 @@ function calculateMonthDetails(date) {
     date.getMonth() - 1,
     1
   )
-  console.log("staticPreviousMonth", staticPreviousMonth)
+
   const prevMonthLength = months[staticPreviousMonth.getMonth()].days
   const firstDayOfStaticWeek = ((staticDate.getDay() + 6) % 7) + 1 // from wich day week start
   const PreviousMonthStartFromDate =
     prevMonthLength - (firstDayOfStaticWeek - 1)
   const monthLength = months[staticDate.getMonth()].days
-  console.log("monthLength", monthLength)
+
 
   // Calculation to fill weeklines with a all days
   const restOfPrevMonth = Array.from(

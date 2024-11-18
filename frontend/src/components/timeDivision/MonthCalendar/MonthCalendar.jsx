@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import WeekLine from "./WeekLine"
 import calculateMonthDetails, { namesOfDays } from "./Math/TimeMath"
-import { getDateShifted } from "./TimeConstant/TimeConstants"
 
 function MonthCalendar({ shift, handleOpenNewDay }) {
   // const { months, shiftedDate: dateShifted, date } = getDateShifted(shift)
@@ -34,14 +33,14 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
   return (
     <>
       <div className='h-full w-full flex flex-col items-center self-center select-none'>
-        <div className='w-50 text-base  text-center'>
+        <div className='text-base  text-center'>
           {monthDetails.nameOfMonth + " " + monthDetails.year}
         </div>
         <table className='w-full h-full table-fixed rounder border-collapse'>
-          <thead className='h-1/12'>
-            <tr className='w-full '>
+          <thead className='h-1/12 w-full'>
+            <tr className='w-full'>
               {namesOfDays.map((day, index) => (
-                <th key={index} className='w-min w-1/7'>
+                <th key={index} className='w-1/7'>
                   <span
                     key={index}
                     className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'

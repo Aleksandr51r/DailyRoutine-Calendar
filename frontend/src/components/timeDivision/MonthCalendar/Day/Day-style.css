@@ -3,6 +3,10 @@
   left: 50%;
   height: 100%;
   width: 400px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
+  backdrop-filter: invert(80%);
+  backdrop-filter: sepia(60%);
+  backdrop-filter: blur(10px);
   transform: translateX(-50%);
+  color: aliceblue;
 }

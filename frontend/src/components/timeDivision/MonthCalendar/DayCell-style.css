@@ -14,14 +14,15 @@
 }
 
 .day-cell:hover {
-  transform: perspective(900px) scale(1.05);
+  transform: scale(1.05);
   transition: transform 0.25s ease-in-out;
-  background-color: #475569;
+  background-color: #3b414b7c;
   outline: 1px solid #cccfcf;
-  outline-offset: -1px;
+  outline-offset: -3px;
   cursor: pointer;
   z-index: 32;
   border-radius: 1px;
+  filter: none;
 }
 .day-cell-row:first-child {
   background-color: #282f3b;
@@ -49,4 +50,8 @@
 .today {
   outline: 2px solid red;
   z-index: 31;
+}
+
+.day-cell-row {
+  height: 20%;
 }
