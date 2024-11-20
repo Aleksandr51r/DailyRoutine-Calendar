@@ -5,15 +5,20 @@ import Day from "./Day/Day"
 
 function DayCell({
   day,
+  month,
   weekend,
   currentMonth,
   handleOpenNewDay,
   isPassed,
   isCurrentDay,
-  weeksQnty,
+  weeksQuantity,
   getMonthStatus,
+  handleChooseDay,
+  year,
 }) {
-  const month = getMonthStatus()
+  const monthStatus = getMonthStatus(day)
+  // const dayCellDate = new Date(year, month, day)
+  // onClick={() => handleChooseDay()}
   return (
     <td>
       <div
@@ -21,17 +26,18 @@ function DayCell({
           h-[100%] justify-stretch
            ${currentMonth ? "current" : "not-current"} 
            ${weekend && currentMonth ? "week-end" : "work-day"} 
-
            ${
-             month === "prevMonth"
+             monthStatus === "prevMonth"
                ? "passed"
-               : month === "currentMonth"
+               : monthStatus === "currentMonth"
                ? isPassed
                  ? "passed"
                  : ""
                : ""
            } 
-           ${month === "currentMonth" ? (isCurrentDay ? "today" : "") : ""}`}
+           ${
+             monthStatus === "currentMonth" ? (isCurrentDay ? "today" : "") : ""
+           }`}
         onClick={handleOpenNewDay}
       >
         <div

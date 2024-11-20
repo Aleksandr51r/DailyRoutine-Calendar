@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import WeekLine from "./WeekLine"
 import calculateMonthDetails, { namesOfDays } from "./Math/TimeMath"
+import { daysOfWeek } from "./TimeConstant/TimeConstants"
 
-function MonthCalendar({ shift, handleOpenNewDay }) {
+function MonthCalendar({ shift, handleOpenNewDay, handleChooseDay }) {
   // const { months, shiftedDate: dateShifted, date } = getDateShifted(shift)
   const date = new Date()
   const shiftedDate = new Date(date.getFullYear(), date.getMonth() + shift, 1)
@@ -10,7 +11,6 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
   const [monthDetails, setMonthDetails] = useState(
     calculateMonthDetails(shiftedDate)
   )
-
   const getMonthStatus = (currentDate, shiftedDate) => {
     if (
       currentDate.getFullYear() === shiftedDate.getFullYear() &&
@@ -28,7 +28,8 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
     }
   }
 
-  const weeksQnty = Object.keys(monthDetails.weeks).length
+  const weeksQuantity = Object.keys(monthDetails.weeks).length
+  const year = monthDetails.year
 
   return (
     <>
@@ -38,13 +39,11 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
         </div>
         <table className='w-full h-full table-fixed rounder border-collapse'>
           <thead className='h-1/12 w-full'>
-            <tr className='w-full'>
+            <tr className='w-full' key={1}>
               {namesOfDays.map((day, index) => (
+                // ! : Key problem for first render of calendar in carousel
                 <th key={index} className='w-1/7'>
-                  <span
-                    key={index}
-                    className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'
-                  >
+                  <span className='block overflow-hidden text-ellipsis font-normal italic text-xs mobile:text-[8px] tablet:text-xs laptop:text-xs desktop:text-xs  whitespace-nowrap dark:text-cyan-100'>
                     {day}
                   </span>
                 </th>
@@ -69,10 +68,12 @@ function MonthCalendar({ shift, handleOpenNewDay }) {
                   </div>
                   <WeekLine
                     key={weekIndex}
-                    weeksQnty={`${weeksQnty}`}
+                    weeksQuantity={`${weeksQuantity}`}
                     week={monthDetails.weeks[week].daysOfWeek}
                     handleOpenNewDay={handleOpenNewDay}
+                    handleChooseDay={handleChooseDay}
                     getMonthStatus={() => getMonthStatus(date, shiftedDate)}
+                    year={year}
                   />
                 </>
               ))}

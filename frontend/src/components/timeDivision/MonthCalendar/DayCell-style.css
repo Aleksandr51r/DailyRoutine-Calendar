@@ -17,10 +17,10 @@
   transform: scale(1.05);
   transition: transform 0.25s ease-in-out;
   background-color: #3b414b7c;
-  outline: 1px solid #cccfcf;
+  outline: 2px solid #5cd6d6;
   outline-offset: -3px;
   cursor: pointer;
-  z-index: 32;
+  z-index: 12;
   border-radius: 1px;
   filter: none;
 }
@@ -32,7 +32,7 @@
   background-color: #243044;
   background-color: #36383a;
   background-color: #3e444e;
-  z-index: 30;
+  z-index: 10;
 }
 
 .not-current {
@@ -40,7 +40,7 @@
   background-color: #36383a;
   filter: grayscale(70%) brightness(40%);
   opacity: 0.7;
-  z-index: 29;
+  z-index: 9;
 }
 .week-end {
   background-color: #3e444e;
@@ -49,7 +49,7 @@
 
 .today {
   outline: 2px solid red;
-  z-index: 31;
+  z-index: 11;
 }
 
 .day-cell-row {

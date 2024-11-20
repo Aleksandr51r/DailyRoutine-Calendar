@@ -2,11 +2,26 @@
   position: absolute;
   left: 50%;
   height: 100%;
-  width: 400px;
-  /* border: 2px solid red; */
-  backdrop-filter: invert(80%);
-  backdrop-filter: sepia(60%);
-  backdrop-filter: blur(10px);
+  width: 450px;
+  border: 2px solid red;
+  backdrop-filter: blur(3px);
+  /* backdrop-filter: sepia(100%); */
+  /* backdrop-filter: invert(80%); */
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0px 0px 100px 1px rgb(49, 58, 61); */
   transform: translateX(-50%);
   color: aliceblue;
+  user-select: none;
+}
+
+.time-slot {
+  align-items: center;
+  justify-content: end;
+}
+
+.line {
+  border-bottom: 1px solid hsla(199, 36%, 78%, 0.459);
+}
+.time-line {
+  color: hsla(199, 36%, 78%, 0.8);
 }

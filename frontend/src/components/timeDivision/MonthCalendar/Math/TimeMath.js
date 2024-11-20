@@ -34,21 +34,22 @@ function calculateMonthDetails(date) {
   }
 
   const staticDate = new Date(date.getFullYear(), date.getMonth(), 1)
+
   const currentDate = new Date()
   const staticPreviousMonth = new Date(
     date.getFullYear(),
     date.getMonth() - 1,
     1
   )
+  const year = staticDate.getFullYear()
 
   const prevMonthLength = months[staticPreviousMonth.getMonth()].days
-  const firstDayOfStaticWeek = ((staticDate.getDay() + 6) % 7) + 1 // from wich day week start
+  const firstDayOfStaticWeek = ((staticDate.getDay() + 6) % 7) + 1 // from witch day week start
   const PreviousMonthStartFromDate =
     prevMonthLength - (firstDayOfStaticWeek - 1)
   const monthLength = months[staticDate.getMonth()].days
 
-
-  // Calculation to fill weeklines with a all days
+  // Calculation to fill week lines with a all days
   const restOfPrevMonth = Array.from(
     { length: firstDayOfStaticWeek - 1 },
     (_, i) => PreviousMonthStartFromDate + i + 1
@@ -65,7 +66,7 @@ function calculateMonthDetails(date) {
     },
     (_, i) => i + 1
   )
-
+  // const forNextMonth = (staticDate.getMonth() + 1).getFullYear()
   const previousMonthObjects = restOfPrevMonth.reduce((obj, day) => {
     return {
       ...obj,
@@ -74,6 +75,7 @@ function calculateMonthDetails(date) {
         month: months[staticPreviousMonth.getMonth()].name,
         isCurrent: false,
         isPassed: true,
+        year,
       },
     }
   }, {})
@@ -87,6 +89,7 @@ function calculateMonthDetails(date) {
         isCurrent: true,
         isPassed: day < currentDate.getDate() ? true : false,
         currentDay: currentDate.getDate() === day,
+        year,
       },
     }
   }, {})
@@ -96,18 +99,27 @@ function calculateMonthDetails(date) {
       ...obj,
       [day]: {
         day,
-        month: months[staticDate.getMonth() + 1]?.name,
+        month:
+          months[
+            (staticDate.getMonth() + 1) % 12 === 0
+              ? 0
+              : staticDate.getMonth() + 1
+          ]?.name,
         isCurrent: false,
         isPassed: false,
+        year:
+          staticDate.getFullYear() +
+          ((staticDate.getMonth() + 1) % 12 === 0 ? 1 : 0),
       },
     }
   }, {})
 
-  const allDayss = {
+  const allDaysVoid = {
     prev: { ...previousMonthObjects },
     current: { ...currentMonthObjects },
     next: { ...nextMonthObjects },
   }
+
   const allDays = [
     ...Object.values(previousMonthObjects),
     ...Object.values(currentMonthObjects),
@@ -133,21 +145,20 @@ function calculateMonthDetails(date) {
     // }
     const monthOffset = firstDay === 1 ? 0 : i === 0 ? -1 : 0 // To add a previous month
     const month = date.getMonth() + monthOffset
-    const year = date.getFullYear()
+
     const currentDayDate = new Date(year, month, firstDay)
     const weekNumber = currentDayDate.getWeek()
-    const currenMonth = currentDayDate.getMonth()
+    const currentMonth = currentDayDate.getMonth()
 
     weeks[weekNumber] = {
       daysOfWeek,
       month: months[month] ?? months[0], // Problem of dec-jan
       year:
         currentDayDate.getFullYear() +
-        (currenMonth === 2 ? 0 : currenMonth + weekNumber === 12 ? 1 : 0),
+        (currentMonth === 2 ? 0 : currentMonth + weekNumber === 12 ? 1 : 0),
     }
   }
 
-  const year = date.getFullYear()
   return {
     weeks,
     year,

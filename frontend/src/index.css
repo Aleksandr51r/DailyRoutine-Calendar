@@ -16,8 +16,9 @@
 }
 
 body {
-  background-color: #1e293b;
   background-color: #333333;
+  background-color: #1e293b;
+  background-color: #141b25;
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   min-height: 100vh;

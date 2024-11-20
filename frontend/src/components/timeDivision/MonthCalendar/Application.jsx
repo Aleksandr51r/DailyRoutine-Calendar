@@ -1,30 +1,43 @@
 import React, { useState } from "react"
-import CaledarCarousel from "./CaledarCarousel"
+import CalendarCarousel from "./CalendarCarousel"
 import Day from "./Day/Day"
 import Overlay from "../../UI/Overlay"
 
 function Application() {
-  const [isDayISopen, setIsdayIsOpen] = useState(false)
+  const [isDayIsOpen, setIsDayIsOpen] = useState(false)
+  const [whichDayIsOpen, setWhichDayIsOpen] = useState(null)
   const handleOpenNewDay = () => {
-    setIsdayIsOpen(true)
+    setIsDayIsOpen(true)
+  }
+  const handleChooseDay = (date) => {
+    setWhichDayIsOpen()
   }
   return (
     <>
-      {isDayISopen ? (
+      {isDayIsOpen ? (
         <>
           <Overlay
             onClick={() => {
-              setIsdayIsOpen(false)
+              setIsDayIsOpen(false)
             }}
           />
           <Day />
         </>
       ) : null}
-      <div className="h-full w-full">
-        <CaledarCarousel handleOpenNewDay={handleOpenNewDay} />
+      <div className={`h-full w-full`}>
+        <CalendarCarousel
+          handleOpenNewDay={handleOpenNewDay}
+          handleChooseDay={handleChooseDay}
+        />
       </div>
     </>
   )
 }
 
 export default Application
+
+// // test
+// * test
+// ! test
+// ? test
+

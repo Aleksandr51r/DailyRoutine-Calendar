@@ -44,3 +44,4 @@ function calculateMonthDetails(date: Date): any {
   const prevMonthLength: number = months[staticPreviousMonth.getMonth()].days
   console.log("prevMonthLength -----> ", prevMonthLength)
 }
+            // TODO : Switch on Ts
