@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import MonthCalendar from "./MonthCalendar"
 import "./CalendarCarousel-style.css"
 
-function CalendarCarousel({ handleOpenNewDay, handleChooseDay }) {
+function CalendarCarousel({ handleOpenDay, handleOpenWeek, handleChooseDay }) {
   const [shift, setShift] = useState(0)
 
   const calendarStock = [
@@ -10,7 +10,8 @@ function CalendarCarousel({ handleOpenNewDay, handleChooseDay }) {
     <MonthCalendar
       key={shift}
       shift={shift}
-      handleOpenNewDay={handleOpenNewDay}
+      handleOpenDay={handleOpenDay}
+      handleOpenWeek={handleOpenWeek}
       handleChooseDay={handleChooseDay}
     />,
     <MonthCalendar key={shift + 1} shift={shift + 1} />,

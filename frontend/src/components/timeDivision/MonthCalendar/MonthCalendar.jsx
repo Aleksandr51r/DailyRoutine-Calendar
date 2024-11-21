@@ -3,7 +3,12 @@ import WeekLine from "./WeekLine"
 import calculateMonthDetails, { namesOfDays } from "./Math/TimeMath"
 import { daysOfWeek } from "./TimeConstant/TimeConstants"
 
-function MonthCalendar({ shift, handleOpenNewDay, handleChooseDay }) {
+function MonthCalendar({
+  shift,
+  handleOpenDay,
+  handleOpenWeek,
+  handleChooseDay,
+}) {
   // const { months, shiftedDate: dateShifted, date } = getDateShifted(shift)
   const date = new Date()
   const shiftedDate = new Date(date.getFullYear(), date.getMonth() + shift, 1)
@@ -63,14 +68,17 @@ function MonthCalendar({ shift, handleOpenNewDay, handleChooseDay }) {
               })
               .map((week, weekIndex) => (
                 <>
-                  <div className='week-number italic absolute mobile:text-sm laptop:text-sm shadow-2xl shadow-slate-100'>
+                  <div
+                    className='week-number italic absolute mobile:text-sm laptop:text-sm shadow-2xl shadow-slate-100'
+                    onClick={() => handleOpenWeek()}
+                  >
                     {week}
                   </div>
                   <WeekLine
                     key={weekIndex}
                     weeksQuantity={`${weeksQuantity}`}
                     week={monthDetails.weeks[week].daysOfWeek}
-                    handleOpenNewDay={handleOpenNewDay}
+                    handleOpenDay={handleOpenDay}
                     handleChooseDay={handleChooseDay}
                     getMonthStatus={() => getMonthStatus(date, shiftedDate)}
                     year={year}

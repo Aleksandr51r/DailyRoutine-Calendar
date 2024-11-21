@@ -8,7 +8,7 @@ function DayCell({
   month,
   weekend,
   currentMonth,
-  handleOpenNewDay,
+  handleOpenDay,
   isPassed,
   isCurrentDay,
   weeksQuantity,
@@ -38,7 +38,7 @@ function DayCell({
            ${
              monthStatus === "currentMonth" ? (isCurrentDay ? "today" : "") : ""
            }`}
-        onClick={handleOpenNewDay}
+        onClick={handleOpenDay}
       >
         <div
           className={`day-cell-row h-1/5 text-ellipsis overflow-hidden whitespace-nowrap border-b border-stone-600  dark:text-sky-100 flex flex-row justify-between`}

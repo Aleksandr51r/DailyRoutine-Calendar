@@ -1,4 +1,4 @@
 .overlay {
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
   transition: backdrop-filter ease-in-out 1.3s;
 }

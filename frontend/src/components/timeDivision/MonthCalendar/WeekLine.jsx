@@ -4,12 +4,12 @@ import DayCell from "./DayCell"
 function WeekLine({
   week,
   weeksQuantity,
-  handleOpenNewDay,
+  handleOpenDay,
   getMonthStatus,
   year,
   handleChooseDay,
 }) {
-  console.log("week", week)
+  // console.log("week", week)
   // * for Mozila size bug
   const mozilaSizeDayCell = { 4: 25, 5: 20, 6: 16.66 }
   const weekHeight = mozilaSizeDayCell[weeksQuantity] || 20
@@ -23,7 +23,7 @@ function WeekLine({
           weeksQuantity={`${weeksQuantity}`}
           weekend={index >= 5 ? true : false}
           currentMonth={week[index].isCurrent}
-          handleOpenNewDay={handleOpenNewDay}
+          handleOpenDay={handleOpenDay}
           isPassed={week[index].isPassed}
           isCurrentDay={week[index].currentDay}
           getMonthStatus={getMonthStatus}

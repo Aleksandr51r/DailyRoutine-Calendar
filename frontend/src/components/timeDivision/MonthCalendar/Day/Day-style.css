@@ -2,16 +2,38 @@
   position: absolute;
   left: 50%;
   height: 100%;
-  width: 450px;
-  border: 2px solid red;
-  backdrop-filter: blur(3px);
+  width: 320px;
+  /* border: 2px solid red; */
+  backdrop-filter: blur(2px);
   /* backdrop-filter: sepia(100%); */
   /* backdrop-filter: invert(80%); */
   /* background-color: rgba(0, 0, 0, 0.2); */
-  /* box-shadow: 0px 0px 100px 1px rgb(49, 58, 61); */
+  /* box-shadow: 1px 1px 100px 1px rgb(49, 58, 61); */
   transform: translateX(-50%);
   color: aliceblue;
   user-select: none;
+}
+.full-hour {
+  font-size: 14px;
+}
+.partial-hour {
+  font-size: 7px;
+}
+@media (min-width: 768px) {
+  .day {
+    width: 450px;
+  }
+}
+@media (min-width: 1680px) {
+  .day {
+    width: 550px;
+  }
+  .full-hour {
+    font-size: 20px;
+  }
+  .partial-hour {
+    font-size: 12px;
+  }
 }
 
 .time-slot {
