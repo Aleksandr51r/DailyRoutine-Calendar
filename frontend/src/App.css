@@ -1,0 +1,14 @@
+.btn-empty {
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.4s ease-in-out;
+}
+
+.btn-empty:hover {
+  transform: scale(1.2) ;
+  transition: transform 0.4s ease-in-out;
+  background-color: transparent;
+}

@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react"
 import "./Day-style.css"
+import { TfiClose } from "react-icons/tfi"
 
-function Day({ day }) {
+function Day({ handleCloseDay, day }) {
   const [startTime, setStartTime] = useState("05:30")
   const [endTime, setEndTime] = useState("22:30")
 
@@ -9,7 +10,6 @@ function Day({ day }) {
     const [hour, minute] = time.split(":").map(Number)
     return { hour, minute }
   }, [])
-  // TODO Close button
   const generateTimeSlots = useCallback(() => {
     const { hour: startHour, minute: startMinute } = parseTime(startTime)
     const { hour: endHour, minute: endMinutes } = parseTime(endTime)
@@ -49,6 +49,9 @@ function Day({ day }) {
 
   return (
     <div className={` day z-40 p-4`}>
+      <button className='btn-empty absolute right-0'>
+        <TfiClose onClick={handleCloseDay} />
+      </button>
       <div className='w-[100%] h-[100%] overflow-auto p-4'>
         <div className='text-center font-semibold text-xl h-[5%]'>Day</div>
         <div className='text-center font-semibold text-xl h-[5%]'>

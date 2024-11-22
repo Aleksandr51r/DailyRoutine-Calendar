@@ -11,6 +11,9 @@ function Application() {
   const handleOpenDay = () => {
     setIsDayIsOpen(true)
   }
+  const handleCloseDay = () => {
+    setIsDayIsOpen(false)
+  }
   const handleOpenWeek = () => {
     setIsWeekIsOpen(true)
   }
@@ -18,6 +21,7 @@ function Application() {
   const handleChooseDay = (date) => {
     setWhichDayIsOpen()
   }
+
   return (
     <>
       {isWeekIsOpen ? (
@@ -33,12 +37,10 @@ function Application() {
       {isDayIsOpen ? (
         <>
           <Overlay
-            onClick={() => {
-              setIsDayIsOpen(false)
-            }}
+            onClick={() => handleCloseDay()}
             layOfOverlay={isWeekIsOpen ? true : false}
           />
-          <Day />
+          <Day handleCloseDay={handleCloseDay}/>
         </>
       ) : null}
       <div className={`h-full w-full`}>
@@ -58,3 +60,4 @@ export default Application
 // * test
 // ! test
 // ? test
+// TODO Atention !! class for week schedule and day are same !!
